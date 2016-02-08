@@ -1,7 +1,7 @@
-body {
+.button {
 	background-color: yellow;
 }
 
-body .red{
+.red{
 	background-color: red;
 }

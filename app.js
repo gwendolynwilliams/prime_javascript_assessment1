@@ -15,29 +15,28 @@ var i=0;
 
 $(document).ready(function() {
 
-	$('#generate').on('click', function() {
+	$('.generate').on('click', function() {
 		i++;
-		var buttonText = '<div id="deleteButton"><button id="delete">delete</button></div><div id="changeButton"><button id="change">change</button></div><br />';
+		console.log(i);
 		
-		// adds delete & change buttons
-		$('#button').html(buttonText + i);
+		var $el = $('.container').children().last(); 
+		$el.append('<div class="buttons"><button class="delete">Delete</button><button class="change">Change</button><p>' + i + '</p></div>');
+
+
+		// delete button
+		$('.container').on('click', '.delete', function() {
+	  		$(this).parent().remove();     
+		});
+
+		// change button
+		$('.button').on('click', '.change', function() {
+			$(this).parent().toggleClass('red');     
+		})
 		
-		//passing in data key=id, value=deleteMe
-		$('#deleteButton').children().first().data('id', 'deleteMe');
 	});
-
-
-	// can't get the listener to listen!
-	// I know it's somewhere in my data method, just can't figure it out
-	$('#deleteButton').on('click', function() {
-		//var selected = $(this).data('id');
-		console.log('Delete Button clicked!');
-	});
-
-	$('#changeButton').on('click', function() {
-		// change background color from red to yellow
-		console.log('change button clicked!');
-	});
-
 
 })
+
+
+
+
